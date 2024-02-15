@@ -2,7 +2,7 @@ import os
 import argparse
 import magic
 
-def classify_file_type(file_path):
+
     """
     Classify the type of a file based on its extension or MIME type.
 
@@ -12,6 +12,7 @@ def classify_file_type(file_path):
     Returns:
         str: The general type of the file based on its extension or MIME type.
     """
+def classify_file_type(file_path):
     _, extension = os.path.splitext(file_path)
     if extension:
         return extension.lstrip('.')
@@ -19,8 +20,8 @@ def classify_file_type(file_path):
         mime_type = magic.Magic(mime=True)
         file_type = mime_type.from_file(file_path)
         return file_type.split('/')[0] if '/' in file_type else file_type
-
-def generate_permissions_report(file_path, permission):
+        
+#########################################################################################
     """
     Generate a report for files with unusual permissions.
 
@@ -28,11 +29,14 @@ def generate_permissions_report(file_path, permission):
         file_path (str): Path to the file.
         permission (str): File permissions in octal format.
     """
+
+def generate_permissions_report(file_path, permission):
     with open("permissions_report.txt", "a") as report_file:
         report_file.write(f"File: {file_path}\n")
         report_file.write(f"Permissions: {permission}\n\n")
 
-def analyze_directory(directory, large_file_threshold):
+#########################################################################################
+
     """
     Analyze a directory to identify file types, large files, and files with unusual permissions.
 
@@ -45,6 +49,8 @@ def analyze_directory(directory, large_file_threshold):
         list: List of tuples containing paths and sizes of large files.
         int: Total number of files analyzed.
     """
+
+def analyze_directory(directory, large_file_threshold):
     file_types = {}
     large_files = []
     total_files = 0
@@ -74,10 +80,14 @@ def analyze_directory(directory, large_file_threshold):
 
     return file_types, large_files, total_files
 
-def main():
+#########################################################################################
+    
     """
     Main function to parse command-line arguments and initiate directory analysis.
     """
+
+def main():
+    
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="File System Analyzer")
     parser.add_argument("directory", nargs='?', help="Directory to analyze")
