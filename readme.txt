@@ -16,19 +16,22 @@ The File System Analyzer is a command-line tool developed in Python that analyze
 
 ## Requirements
 - Python 3.x
-- Additional Python libraries: [python-magic] (for file signature analysis)
+- Additional Python libraries: [python-magic-bin] (for file signature analysis)
 
 ## Usage
 1. Clone this repository to your local machine.
 2. Install dependencies using `pip install -r requirements.txt`.
 3. Run the tool with the desired directory path and optional parameters:
+
 ```
 python file_system_analyzer.py <directory_path> [--large-file-threshold <threshold>]
+
 ```
 - `<directory_path>`: Path to the directory to be analyzed.
 - `--large-file-threshold <threshold>`: (Optional) Threshold size for identifying large files (in bytes).
 
 ## Example
+
 ```
 python file_system_analyzer.py /path/to/directory --large-file-threshold 1000000
 ```
